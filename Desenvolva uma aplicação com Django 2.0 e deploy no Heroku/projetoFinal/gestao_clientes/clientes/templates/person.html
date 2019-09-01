@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Seja Bem Vindo {% endblock %}
+
+{% block main%}
+
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6">
+            <ul class="list-group">
+            {% for person in persons %}
+                <li class="list-group-item">
+                    <a href="{% url 'persons_update' person.id %}">{{ person.first_name }}</a>
+                    <a href="{% url 'persons_delete' person.id %}" class="btn btn-danger">deletar</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="{% url 'persons_new' %}" class="btn btn-primary">Novo cliente</a>
+        </div>
+        <div class="col">
+          <p>Ola {{ user.username }}</p>
+          <a href="{% url 'logout' %}" class="btn btn-warning">Sair</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Desenvolvimento com Django 2.x</span>
+      </div>
+    </footer>
+{% endblock %}
